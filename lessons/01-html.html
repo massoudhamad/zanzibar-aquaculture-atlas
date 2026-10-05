@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn to build a Zanzibar Aquaculture Atlas using HTML, CSS, JavaScript, Leaflet and real anonymous survey data."><title>HTML and web foundations | Zanzibar Atlas Course</title><link rel="stylesheet" href="../assets/course.css"><script defer src="../assets/course.js"></script><link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"><noscript><style>.sidebar{display:block}.menu-toggle,.copy-code,.complete{display:none}</style></noscript></head>
+<body data-unit="lesson-1"><a class="skip" href="#main">Skip to lesson content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">≈</span><span>Zanzibar Atlas Course<small>HTML · CSS · JAVASCRIPT · LEAFLET</small></span></a><a class="header-link" href="../demo/index.html" target="_blank" rel="noopener">Open the atlas demo</a><button type="button" class="menu-toggle" id="menu-toggle" aria-controls="course-nav" aria-expanded="false">Menu</button></header><div class="layout"><nav class="sidebar" id="course-nav" aria-label="Course navigation"><a href="../index.html">Course overview</a><div class="nav-group">Lessons</div><a data-unit="lesson-1" href="../lessons/01-html.html" aria-current="page"><span class="nav-num">01</span>HTML and web foundations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-2" href="../lessons/02-css.html"><span class="nav-num">02</span>CSS and responsive layouts<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-3" href="../lessons/03-javascript.html"><span class="nav-num">03</span>JavaScript and page interactions<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-4" href="../lessons/04-leaflet.html"><span class="nav-num">04</span>Leaflet and GeoJSON<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-5" href="../lessons/05-data.html"><span class="nav-num">05</span>Survey data and filtering<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-6" href="../lessons/06-testing.html"><span class="nav-num">06</span>Testing and responsible sharing<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Practical labs</div><a data-unit="lab-1" href="../labs/01-layout.html"><span class="nav-num">01</span>Build the page and layout<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-2" href="../labs/02-map.html"><span class="nav-num">02</span>Display a Leaflet map<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-3" href="../labs/03-data.html"><span class="nav-num">03</span>Load the survey locations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-4" href="../labs/04-interactions.html"><span class="nav-num">04</span>Add filters and farm details<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Course resources</div><a href="../fieldwork.html">Fieldwork and findings</a><a href="../resources.html">Downloads and setup</a><a href="../assessment.html">Assessment and troubleshooting</a><a href="../instructor.html">Instructor guide</a><div class="sidebar-foot"><div id="progress-count">0 of 10 units completed</div><div class="progress-track"><span id="progress-bar"></span></div>Progress is saved only in this browser.</div></nav><main class="content" id="main"><div class="eyebrow">Web mapping · Zanzibar</div><h1>HTML and web foundations</h1><div class="meta"><span>Lesson 1</span><span>1 hour</span><span>Read, practise, check</span></div><details class="onpage"><summary>On this page</summary><ul><li><a href="#how-the-atlas-reaches-the-browser">How the atlas reaches the browser</a></li><li><a href="#separate-the-source-files">Separate the source files</a></li><li><a href="#load-scripts-in-a-predictable-order">Load scripts in a predictable order</a></li><li><a href="#discuss">Discuss</a></li><li><a href="#give-the-atlas-a-clear-structure">Give the atlas a clear structure</a></li><li><a href="#attributes-students-should-recognise">Attributes students should recognise</a></li><li><a href="#instructor-activity">Instructor activity</a></li><li><a href="#check-understanding">Check understanding</a></li></ul></details><article class="reading"><h2 id="how-the-atlas-reaches-the-browser">How the atlas reaches the browser</h2>
+<p>A browser requests a page from a web server. It reads the HTML, applies the CSS and runs JavaScript. In this project, JavaScript also requests a GeoJSON file and map tiles. The local Python server serves project files; it does not generate the map or replace the external tile service.</p>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Part</th>
+<th scope="col">Responsibility</th>
+<th scope="col">Atlas example</th>
+</tr>
+<tr>
+<td>HTML</td>
+<td>Page structure and meaning</td>
+<td>Map container, labels, buttons</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>Presentation and layout</td>
+<td>Sidebar, colours, mobile layout</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>Behaviour and data handling</td>
+<td>Load records, filter, update counts</td>
+</tr>
+<tr>
+<td>Leaflet</td>
+<td>Map interactions and layers</td>
+<td>Zoom, points, popups</td>
+</tr>
+<tr>
+<td>GeoJSON</td>
+<td>Geographic features and attributes</td>
+<td>Point geometry and farm code</td>
+</tr>
+</table></div>
+<h3 id="separate-the-source-files">Separate the source files</h3>
+<p>Use index.html for the page, styles.css for design, app.js for behaviour, and data/farms.geojson for data. Relative paths are resolved from the page URL. A misspelled filename can produce an HTTP 404 error even when the file exists in another folder.</p>
+<h3 id="load-scripts-in-a-predictable-order">Load scripts in a predictable order</h3>
+<p>The supplied HTML uses defer on external scripts. The browser can continue parsing the page, then executes Leaflet before app.js. This allows the map container and controls to exist before JavaScript uses them.</p>
+<h3 id="discuss">Discuss</h3>
+<p>If farm points appear but streets do not, which part of this system probably failed? If the heading appears but the map is absent, which files and browser panels should you inspect first?</p>
+<h2 id="give-the-atlas-a-clear-structure">Give the atlas a clear structure</h2>
+<p>HTML describes content and controls. A heading identifies the atlas, an aside contains filters, and a section holds the map. A div is useful as a map container because Leaflet will manage its contents.</p>
+<div class="code-block"><div class="code-head"><span>Code example</span><button type="button" class="copy-code">Copy code</button></div><pre><code>&lt;label for=&quot;district&quot;&gt;District&lt;/label&gt;
+&lt;select id=&quot;district&quot;&gt;
+  &lt;option value=&quot;&quot;&gt;All districts&lt;/option&gt;
+&lt;/select&gt;
+&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;</code></pre></div>
+<p>The label for attribute matches the select id. This relationship makes the control easier to use. An id must be unique on the page. JavaScript finds the control with document.getElementById("district").</p>
+<h3 id="attributes-students-should-recognise">Attributes students should recognise</h3>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Attribute</th>
+<th scope="col">Purpose</th>
+</tr>
+<tr>
+<td>id</td>
+<td>A unique page identifier used by CSS and JavaScript</td>
+</tr>
+<tr>
+<td>class</td>
+<td>A reusable styling category</td>
+</tr>
+<tr>
+<td>href</td>
+<td>A link destination or stylesheet address</td>
+</tr>
+<tr>
+<td>src</td>
+<td>A script or image source</td>
+</tr>
+<tr>
+<td>type</td>
+<td>The behaviour of a control such as search or button</td>
+</tr>
+<tr>
+<td>aria-live</td>
+<td>Announces updated result text to assistive technology</td>
+</tr>
+</table></div>
+<h3 id="instructor-activity">Instructor activity</h3>
+<p>Ask students to add a labelled search box and a Reset button. Then deliberately change id="map" to id="farm-map" without editing the JavaScript. Have students predict the consequence and explain the correction.</p>
+<h3 id="check-understanding">Check understanding</h3>
+<p>Why use a visible label instead of relying only on placeholder text? Why should a clickable result be a button rather than a div with a click handler?</p></article><label class="complete"><input id="unit-complete" type="checkbox">Mark this unit complete</label><p class="status" id="storage-status" aria-live="polite"></p><nav class="pager" aria-label="Unit navigation"><a href="../index.html"><small>Course home</small>Overview</a><a href="../lessons/02-css.html"><small>Next unit</small>CSS and responsive layouts</a></nav><footer class="course-footer">Zanzibar Aquaculture Atlas teaching course · Survey export September 2026<br>Examples use Leaflet 1.9.4. Anonymous location records are not verified unique farms.</footer></main></div></body></html>

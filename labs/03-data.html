@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn to build a Zanzibar Aquaculture Atlas using HTML, CSS, JavaScript, Leaflet and real anonymous survey data."><title>Load the survey locations | Zanzibar Atlas Course</title><link rel="stylesheet" href="../assets/course.css"><script defer src="../assets/course.js"></script><link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"><noscript><style>.sidebar{display:block}.menu-toggle,.copy-code,.complete{display:none}</style></noscript></head>
+<body data-unit="lab-3"><a class="skip" href="#main">Skip to lesson content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">≈</span><span>Zanzibar Atlas Course<small>HTML · CSS · JAVASCRIPT · LEAFLET</small></span></a><a class="header-link" href="../demo/index.html" target="_blank" rel="noopener">Open the atlas demo</a><button type="button" class="menu-toggle" id="menu-toggle" aria-controls="course-nav" aria-expanded="false">Menu</button></header><div class="layout"><nav class="sidebar" id="course-nav" aria-label="Course navigation"><a href="../index.html">Course overview</a><div class="nav-group">Lessons</div><a data-unit="lesson-1" href="../lessons/01-html.html"><span class="nav-num">01</span>HTML and web foundations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-2" href="../lessons/02-css.html"><span class="nav-num">02</span>CSS and responsive layouts<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-3" href="../lessons/03-javascript.html"><span class="nav-num">03</span>JavaScript and page interactions<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-4" href="../lessons/04-leaflet.html"><span class="nav-num">04</span>Leaflet and GeoJSON<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-5" href="../lessons/05-data.html"><span class="nav-num">05</span>Survey data and filtering<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-6" href="../lessons/06-testing.html"><span class="nav-num">06</span>Testing and responsible sharing<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Practical labs</div><a data-unit="lab-1" href="../labs/01-layout.html"><span class="nav-num">01</span>Build the page and layout<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-2" href="../labs/02-map.html"><span class="nav-num">02</span>Display a Leaflet map<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-3" href="../labs/03-data.html" aria-current="page"><span class="nav-num">03</span>Load the survey locations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-4" href="../labs/04-interactions.html"><span class="nav-num">04</span>Add filters and farm details<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Course resources</div><a href="../fieldwork.html">Fieldwork and findings</a><a href="../resources.html">Downloads and setup</a><a href="../assessment.html">Assessment and troubleshooting</a><a href="../instructor.html">Instructor guide</a><div class="sidebar-foot"><div id="progress-count">0 of 10 units completed</div><div class="progress-track"><span id="progress-bar"></span></div>Progress is saved only in this browser.</div></nav><main class="content" id="main"><div class="eyebrow">Web mapping · Zanzibar</div><h1>Load the survey locations</h1><div class="meta"><span>Lab 3</span><span>2 hours</span><span>Read, practise, check</span></div><details class="onpage"><summary>On this page</summary><ul><li><a href="#read-the-survey-features-before-mapping">Read the survey features before mapping</a></li><li><a href="#workbook-route-for-advanced-students">Workbook route for advanced students</a></li><li><a href="#fetch-geojson-and-draw-the-records">Fetch GeoJSON and draw the records</a></li><li><a href="#checkpoint">Checkpoint</a></li></ul></details><article class="reading"><div class="actions"><a class="button secondary" href="../downloads/student-starter.zip" download>Download starter files</a><a class="button secondary" href="../demo/index.html" target="_blank" rel="noopener">View reference atlas</a></div><h2 id="read-the-survey-features-before-mapping">Read the survey features before mapping</h2>
+<p><b>1.</b> Open data/farms.geojson in the editor. The root object is a FeatureCollection. Each feature has a geometry and properties. Inspect a real feature rather than replacing the data with invented farm locations.</p>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Property</th>
+<th scope="col">Meaning</th>
+</tr>
+<tr>
+<td>id</td>
+<td>Anonymous location code such as ZF-0001</td>
+</tr>
+<tr>
+<td>surveyId</td>
+<td>Anonymous parent response code</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Activity from the repeat-location sheet</td>
+</tr>
+<tr>
+<td>district and village</td>
+<td>Attributes joined from the parent response</td>
+</tr>
+<tr>
+<td>area</td>
+<td>Reported value with unspecified unit</td>
+</tr>
+<tr>
+<td>precision</td>
+<td>Reported GPS accuracy in metres</td>
+</tr>
+<tr>
+<td>sharedLocation</td>
+<td>True when exact coordinates occur more than once</td>
+</tr>
+</table></div>
+<p><b>2.</b> Observe that a geometry Point stores [longitude, latitude]. L.geoJSON reads that convention automatically. Do not reverse the dataset coordinates before loading it.</p>
+<p><b>3.</b> Confirm the expected controls: 437 location records; 301 distinct surveyId values; 407 seaweed, 18 sea cucumber, 1 crab and 11 unspecified activities.</p>
+<h3 id="workbook-route-for-advanced-students">Workbook route for advanced students</h3>
+<p>The kit includes prepare_geojson.py. It joins repeat._parent_index to main._index, exports anonymous properties and retains shared-coordinate records. Run it only with the supplied workbook schema. The original workbook is not inside the class kit.</p>
+<div class="code-block"><div class="code-head"><span>Code example</span><button type="button" class="copy-code">Copy code</button></div><pre><code>python3 -m pip install openpyxl
+python3 prepare_geojson.py survey.xlsx   --output starter/data/farms.geojson</code></pre></div>
+<p class="note">Run the optional converter from the teaching-kit root; replace survey.xlsx with the actual workbook path. On Windows, use py instead of python3.</p>
+<h2 id="fetch-geojson-and-draw-the-records">Fetch GeoJSON and draw the records</h2>
+<p><b>4.</b> Replace app.js with checkpoints/03_markers.js. The reference below is the entire file. It replaces the Lab 2 script; do not append a second map initialisation.</p>
+<div class="code-block"><div class="code-head"><span>Code example</span><button type="button" class="copy-code">Copy code</button></div><pre><code>const map = L.map(&#x27;map&#x27;).setView([-6.16, 39.38], 10);
+L.tileLayer(&#x27;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#x27;, {
+  maxZoom: 19, attribution: &#x27;&amp;copy; OpenStreetMap contributors&#x27;
+}).addTo(map);
+async function loadFarms() {
+  try {
+    const response = await fetch(&#x27;data/farms.geojson&#x27;);
+    if (!response.ok) throw new Error(`Data HTTP ${response.status}`);
+    const data = await response.json();
+    const layer = L.geoJSON(data, {
+      pointToLayer: (feature, latlng) =&gt; L.circleMarker(latlng, {
+        radius: 6, color: &#x27;#098c78&#x27;
+      }),
+      onEachFeature: (feature, marker) =&gt; {
+        const node = document.createElement(&#x27;div&#x27;);
+        node.textContent = feature.properties.id + &#x27; - &#x27; +
+          feature.properties.village;
+        marker.bindPopup(node);
+      }
+    }).addTo(map);
+    if (layer.getBounds().isValid()) map.fitBounds(layer.getBounds());
+    document.getElementById(&#x27;count&#x27;).textContent =
+      `${data.features.length} farm-location records loaded`;
+  } catch (error) {
+    document.getElementById(&#x27;status&#x27;).textContent = error.message;
+  }
+}
+loadFarms();</code></pre></div>
+<p><b>5.</b> Reload. Check that farms.geojson returns HTTP 200 in the Network panel. Click a point and read its anonymous code and village. The page reports 437 location records.</p>
+<h3 id="checkpoint">Checkpoint</h3>
+<p>The extent includes the survey points. A few markers overlap because some records share coordinates. Do not interpret visible symbol count as record count.</p></article><label class="complete"><input id="unit-complete" type="checkbox">Mark this unit complete</label><p class="status" id="storage-status" aria-live="polite"></p><nav class="pager" aria-label="Unit navigation"><a href="../labs/02-map.html"><small>Previous unit</small>Display a Leaflet map</a><a href="../labs/04-interactions.html"><small>Next unit</small>Add filters and farm details</a></nav><footer class="course-footer">Zanzibar Aquaculture Atlas teaching course · Survey export September 2026<br>Examples use Leaflet 1.9.4. Anonymous location records are not verified unique farms.</footer></main></div></body></html>

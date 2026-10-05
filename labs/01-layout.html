@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn to build a Zanzibar Aquaculture Atlas using HTML, CSS, JavaScript, Leaflet and real anonymous survey data."><title>Build the page and layout | Zanzibar Atlas Course</title><link rel="stylesheet" href="../assets/course.css"><script defer src="../assets/course.js"></script><link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"><noscript><style>.sidebar{display:block}.menu-toggle,.copy-code,.complete{display:none}</style></noscript></head>
+<body data-unit="lab-1"><a class="skip" href="#main">Skip to lesson content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">≈</span><span>Zanzibar Atlas Course<small>HTML · CSS · JAVASCRIPT · LEAFLET</small></span></a><a class="header-link" href="../demo/index.html" target="_blank" rel="noopener">Open the atlas demo</a><button type="button" class="menu-toggle" id="menu-toggle" aria-controls="course-nav" aria-expanded="false">Menu</button></header><div class="layout"><nav class="sidebar" id="course-nav" aria-label="Course navigation"><a href="../index.html">Course overview</a><div class="nav-group">Lessons</div><a data-unit="lesson-1" href="../lessons/01-html.html"><span class="nav-num">01</span>HTML and web foundations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-2" href="../lessons/02-css.html"><span class="nav-num">02</span>CSS and responsive layouts<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-3" href="../lessons/03-javascript.html"><span class="nav-num">03</span>JavaScript and page interactions<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-4" href="../lessons/04-leaflet.html"><span class="nav-num">04</span>Leaflet and GeoJSON<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-5" href="../lessons/05-data.html"><span class="nav-num">05</span>Survey data and filtering<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-6" href="../lessons/06-testing.html"><span class="nav-num">06</span>Testing and responsible sharing<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Practical labs</div><a data-unit="lab-1" href="../labs/01-layout.html" aria-current="page"><span class="nav-num">01</span>Build the page and layout<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-2" href="../labs/02-map.html"><span class="nav-num">02</span>Display a Leaflet map<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-3" href="../labs/03-data.html"><span class="nav-num">03</span>Load the survey locations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-4" href="../labs/04-interactions.html"><span class="nav-num">04</span>Add filters and farm details<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Course resources</div><a href="../fieldwork.html">Fieldwork and findings</a><a href="../resources.html">Downloads and setup</a><a href="../assessment.html">Assessment and troubleshooting</a><a href="../instructor.html">Instructor guide</a><div class="sidebar-foot"><div id="progress-count">0 of 10 units completed</div><div class="progress-track"><span id="progress-bar"></span></div>Progress is saved only in this browser.</div></nav><main class="content" id="main"><div class="eyebrow">Web mapping · Zanzibar</div><h1>Build the page and layout</h1><div class="meta"><span>Lab 1</span><span>2 hours</span><span>Read, practise, check</span></div><details class="onpage"><summary>On this page</summary><ul><li><a href="#create-and-serve-the-project">Create and serve the project</a></li><li><a href="#checkpoint">Checkpoint</a></li><li><a href="#record-your-evidence">Record your evidence</a></li><li><a href="#complete-html-scaffold">Complete HTML scaffold</a></li><li><a href="#create-a-responsive-layout">Create a responsive layout</a></li><li><a href="#before-moving-on">Before moving on</a></li><li><a href="#mini-challenge">Mini challenge</a></li><li><a href="#expected-result">Expected result</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#complete-responsive-stylesheet">Complete responsive stylesheet</a></li></ul></details><article class="reading"><div class="actions"><a class="button secondary" href="../downloads/student-starter.zip" download>Download starter files</a><a class="button secondary" href="../demo/index.html" target="_blank" rel="noopener">View reference atlas</a></div><h2 id="create-and-serve-the-project">Create and serve the project</h2>
+<p><b>1.</b> Extract the downloadable teaching kit. Open the starter folder in VS Code. Confirm that index.html, styles.css, app.js and data/farms.geojson exist. Folder and filename spelling must match the HTML references.</p>
+<p><b>2.</b> Open a terminal inside starter. Start a local server using the command for your system.</p>
+<div class="code-block"><div class="code-head"><span>Code example</span><button type="button" class="copy-code">Copy code</button></div><pre><code># macOS or Linux
+python3 -m http.server 8000
+
+# Windows with the Python launcher
+py -m http.server 8000</code></pre></div>
+<p><b>3.</b> Visit http://localhost:8000 in the browser. If the command is unavailable, install Python 3 or use VS Code Live Server. Live Server supplies its own URL and port. Do not assume it uses port 8000.</p>
+<p><b>4.</b> Read the supplied index.html scaffold. Find the map, search, district, activity, results and detail ids. Match each label for attribute to its control id.</p>
+<p><b>5.</b> Compare the scaffold with the complete HTML shown below. You may type it into a new empty file for practice. Copy the complete HTML block into one index.html file.</p>
+<h3 id="checkpoint">Checkpoint</h3>
+<p>The heading and labelled controls appear. The map space remains empty because app.js does not initialise a map yet. This is the expected state at this point.</p>
+<h3 id="record-your-evidence">Record your evidence</h3>
+<p>Write down the local URL and show the page in the browser. Explain why opening the page through the server is preferable to double-clicking index.html when fetch will be used later.</p>
+<p class="note">Stop the server with Ctrl+C when finished. Keep it running during the practical work.</p><h2 id="complete-html-scaffold">Complete HTML scaffold</h2><div class="code-block"><div class="code-head"><span>index.html</span><button type="button" class="copy-code">Copy code</button></div><pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Zanzibar Aquaculture Atlas Lab&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot;
+    href=&quot;https://unpkg.com/leaflet@1.9.4/dist/leaflet.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+  &lt;script defer
+    src=&quot;https://unpkg.com/leaflet@1.9.4/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+  &lt;script defer src=&quot;app.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Zanzibar Aquaculture Atlas&lt;/h1&gt;
+    &lt;p&gt;Surveyed farm locations - September 2026&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;aside aria-label=&quot;Farm filters and results&quot;&gt;
+      &lt;label for=&quot;search&quot;&gt;Village or farm code&lt;/label&gt;
+      &lt;input id=&quot;search&quot; type=&quot;search&quot; placeholder=&quot;Try PAJE&quot;&gt;
+      &lt;label for=&quot;district&quot;&gt;District&lt;/label&gt;
+      &lt;select id=&quot;district&quot;&gt;&lt;option value=&quot;&quot;&gt;All districts&lt;/option&gt;&lt;/select&gt;
+      &lt;label for=&quot;activity&quot;&gt;Activity&lt;/label&gt;
+      &lt;select id=&quot;activity&quot;&gt;&lt;option value=&quot;&quot;&gt;All activities&lt;/option&gt;&lt;/select&gt;
+      &lt;div class=&quot;actions&quot;&gt;
+        &lt;button id=&quot;reset&quot; type=&quot;button&quot;&gt;Reset&lt;/button&gt;
+        &lt;button id=&quot;fit&quot; type=&quot;button&quot;&gt;Fit results&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;p id=&quot;count&quot; aria-live=&quot;polite&quot;&gt;Loading data...&lt;/p&gt;
+      &lt;p id=&quot;status&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+      &lt;h2&gt;Matching locations&lt;/h2&gt;
+      &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
+      &lt;h2&gt;Selected record&lt;/h2&gt;
+      &lt;div id=&quot;detail&quot;&gt;Select a marker or a result.&lt;/div&gt;
+    &lt;/aside&gt;
+    &lt;section class=&quot;map-panel&quot; aria-label=&quot;Farm location map&quot;&gt;
+      &lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
+      &lt;ul class=&quot;legend&quot; aria-label=&quot;Activity legend&quot;&gt;
+        &lt;li&gt;&lt;i class=&quot;seaweed&quot;&gt;&lt;/i&gt;Seaweed&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;cucumber&quot;&gt;&lt;/i&gt;Sea cucumber&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;crab&quot;&gt;&lt;/i&gt;Crab&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;unknown&quot;&gt;&lt;/i&gt;Unspecified&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    Records are survey locations, not verified unique farms.
+    Coverage is primarily southern Unguja. Names and contacts are excluded.
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div><h2 id="create-a-responsive-layout">Create a responsive layout</h2>
+<p><b>6.</b> Replace the starter styles.css with the CSS shown below. The stylesheet creates a sidebar, a map column, readable controls and an activity legend.</p>
+<p><b>7.</b> Reload the page. Narrow the browser below 700 pixels. The sidebar should move above the map. Increase browser zoom to 200 percent and check labels, buttons and text.</p>
+<h3 id="before-moving-on">Before moving on</h3>
+<p>&#8226; Inspect #map in browser developer tools and confirm it has height.</p>
+<p>&#8226; Use Tab to move through the controls and check the visible focus outline.</p>
+<p>&#8226; Explain why box-sizing: border-box helps inputs fit the sidebar.</p>
+<p>&#8226; Change the header colour once, reload, and restore the supplied colour.</p>
+<h3 id="mini-challenge">Mini challenge</h3>
+<p>Add a short paragraph explaining that the data is a survey snapshot. Put it in the footer without covering the map or replacing the source note.</p>
+<h3 id="expected-result">Expected result</h3>
+<p>A two-column workspace is visible on a wide screen, and a single-column workspace on a narrow screen. Filters are readable even before they are wired to JavaScript.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>If the page remains unstyled, confirm href="styles.css", check that the server is serving the starter folder, and inspect the Network panel for a 404. A style change may require a hard refresh if the browser cached an older file.</p><h2 id="complete-responsive-stylesheet">Complete responsive stylesheet</h2><div class="code-block"><div class="code-head"><span>styles.css</span><button type="button" class="copy-code">Copy code</button></div><pre><code>* { box-sizing: border-box; }
+body {
+  margin: 0; font: 16px/1.5 Arial, sans-serif;
+  color: #183f44; background: #f3f7f8;
+}
+header { padding: 20px 28px; background: #0b4c50; color: white; }
+h1 { margin: 0; font-size: 28px; }
+header p { margin: 6px 0 0; }
+main { display: grid; grid-template-columns: 320px minmax(0, 1fr); }
+aside { padding: 20px; background: white; }
+label { display: block; font-weight: bold; margin: 12px 0 5px; }
+input, select, button { font: inherit; }
+input, select {
+  width: 100%; padding: 9px; border: 1px solid #9aafb3;
+  border-radius: 5px;
+}
+button {
+  padding: 8px 10px; border: 1px solid #9aafb3;
+  background: white; color: #0b4c50; border-radius: 5px;
+  cursor: pointer;
+}
+button:hover { background: #edf7f4; }
+:focus-visible { outline: 3px solid #d98c32; outline-offset: 2px; }
+.actions { display: flex; gap: 10px; margin-top: 16px; }
+h2 { font-size: 18px; margin: 20px 0 8px; }
+#map { height: 640px; background: #cee6eb; }
+.map-panel { min-width: 0; }
+.legend {
+  list-style: none; display: flex; flex-wrap: wrap;
+  gap: 18px; margin: 0; padding: 14px 20px; background: white;
+}
+.legend i {
+  display: inline-block; width: 10px; height: 10px;
+  border-radius: 50%; margin-right: 6px;
+}
+.seaweed { background: #098c78; }
+.cucumber { background: #d98c32; }
+.crab { background: #7654b8; }
+.unknown { background: #71838b; }
+#results { max-height: 180px; overflow: auto; }
+#results button { display: block; width: 100%; text-align: left; margin: 5px 0; }
+#detail p { margin: 6px 0; font-size: 14px; }
+#status { color: #943a22; }
+footer { padding: 16px 28px; font-size: 14px; }
+@media (max-width: 700px) {
+  main { grid-template-columns: 1fr; }
+  #map { height: 440px; }
+  header, footer { padding: 16px; }
+}</code></pre></div></article><label class="complete"><input id="unit-complete" type="checkbox">Mark this unit complete</label><p class="status" id="storage-status" aria-live="polite"></p><nav class="pager" aria-label="Unit navigation"><a href="../lessons/06-testing.html"><small>Previous unit</small>Testing and responsible sharing</a><a href="../labs/02-map.html"><small>Next unit</small>Display a Leaflet map</a></nav><footer class="course-footer">Zanzibar Aquaculture Atlas teaching course · Survey export September 2026<br>Examples use Leaflet 1.9.4. Anonymous location records are not verified unique farms.</footer></main></div></body></html>

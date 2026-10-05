@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zanzibar Aquaculture Atlas Lab</title>
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Zanzibar Aquaculture Atlas</h1>
+    <p>Surveyed farm locations - September 2026</p>
+  </header>
+  <main>
+    <aside aria-label="Farm filters and results">
+      <label for="search">Village or farm code</label>
+      <input id="search" type="search" placeholder="Try PAJE">
+      <label for="district">District</label>
+      <select id="district"><option value="">All districts</option></select>
+      <label for="activity">Activity</label>
+      <select id="activity"><option value="">All activities</option></select>
+      <div class="actions">
+        <button id="reset" type="button">Reset</button>
+        <button id="fit" type="button">Fit results</button>
+      </div>
+      <p id="count" aria-live="polite">Loading data...</p>
+      <p id="status" role="status"></p>
+      <h2>Matching locations</h2>
+      <div id="results"></div>
+      <h2>Selected record</h2>
+      <div id="detail">Select a marker or a result.</div>
+    </aside>
+    <section class="map-panel" aria-label="Farm location map">
+      <div id="map"></div>
+      <ul class="legend" aria-label="Activity legend">
+        <li><i class="seaweed"></i>Seaweed</li>
+        <li><i class="cucumber"></i>Sea cucumber</li>
+        <li><i class="crab"></i>Crab</li>
+        <li><i class="unknown"></i>Unspecified</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    Records are survey locations, not verified unique farms.
+    Coverage is primarily southern Unguja. Names and contacts are excluded.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn to build a Zanzibar Aquaculture Atlas using HTML, CSS, JavaScript, Leaflet and real anonymous survey data."><title>Add filters and farm details | Zanzibar Atlas Course</title><link rel="stylesheet" href="../assets/course.css"><script defer src="../assets/course.js"></script><link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"><noscript><style>.sidebar{display:block}.menu-toggle,.copy-code,.complete{display:none}</style></noscript></head>
+<body data-unit="lab-4"><a class="skip" href="#main">Skip to lesson content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">≈</span><span>Zanzibar Atlas Course<small>HTML · CSS · JAVASCRIPT · LEAFLET</small></span></a><a class="header-link" href="../demo/index.html" target="_blank" rel="noopener">Open the atlas demo</a><button type="button" class="menu-toggle" id="menu-toggle" aria-controls="course-nav" aria-expanded="false">Menu</button></header><div class="layout"><nav class="sidebar" id="course-nav" aria-label="Course navigation"><a href="../index.html">Course overview</a><div class="nav-group">Lessons</div><a data-unit="lesson-1" href="../lessons/01-html.html"><span class="nav-num">01</span>HTML and web foundations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-2" href="../lessons/02-css.html"><span class="nav-num">02</span>CSS and responsive layouts<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-3" href="../lessons/03-javascript.html"><span class="nav-num">03</span>JavaScript and page interactions<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-4" href="../lessons/04-leaflet.html"><span class="nav-num">04</span>Leaflet and GeoJSON<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-5" href="../lessons/05-data.html"><span class="nav-num">05</span>Survey data and filtering<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-6" href="../lessons/06-testing.html"><span class="nav-num">06</span>Testing and responsible sharing<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Practical labs</div><a data-unit="lab-1" href="../labs/01-layout.html"><span class="nav-num">01</span>Build the page and layout<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-2" href="../labs/02-map.html"><span class="nav-num">02</span>Display a Leaflet map<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-3" href="../labs/03-data.html"><span class="nav-num">03</span>Load the survey locations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-4" href="../labs/04-interactions.html" aria-current="page"><span class="nav-num">04</span>Add filters and farm details<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Course resources</div><a href="../fieldwork.html">Fieldwork and findings</a><a href="../resources.html">Downloads and setup</a><a href="../assessment.html">Assessment and troubleshooting</a><a href="../instructor.html">Instructor guide</a><div class="sidebar-foot"><div id="progress-count">0 of 10 units completed</div><div class="progress-track"><span id="progress-bar"></span></div>Progress is saved only in this browser.</div></nav><main class="content" id="main"><div class="eyebrow">Web mapping · Zanzibar</div><h1>Add filters and farm details</h1><div class="meta"><span>Lab 4</span><span>2 hours</span><span>Read, practise, check</span></div><details class="onpage"><summary>On this page</summary><ul><li><a href="#build-one-filtering-workflow">Build one filtering workflow</a></li><li><a href="#understand-the-function-responsibilities">Understand the function responsibilities</a></li><li><a href="#how-the-filter-behaves">How the filter behaves</a></li><li><a href="#why-the-previous-layer-is-cleared">Why the previous layer is cleared</a></li><li><a href="#before-copying">Before copying</a></li><li><a href="#scope-of-the-teaching-solution">Scope of the teaching solution</a></li><li><a href="#complete-atlas-javascript">Complete atlas JavaScript</a></li><li><a href="#check-the-atlas-against-known-results">Check the atlas against known results</a></li><li><a href="#checkpoint">Checkpoint</a></li></ul></details><article class="reading"><div class="actions"><a class="button secondary" href="../downloads/student-starter.zip" download>Download starter files</a><a class="button secondary" href="../demo/index.html" target="_blank" rel="noopener">View reference atlas</a></div><h2 id="build-one-filtering-workflow">Build one filtering workflow</h2>
+<p><b>1.</b> Replace app.js with the complete script shown below. Copy the complete block into one file. The same file is in solution/app.js.</p>
+<h3 id="understand-the-function-responsibilities">Understand the function responsibilities</h3>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Function</th>
+<th scope="col">Responsibility</th>
+</tr>
+<tr>
+<td>validPoint</td>
+<td>Checks point geometry and global coordinate ranges</td>
+</tr>
+<tr>
+<td>fillSelect</td>
+<td>Builds unique district or activity options</td>
+</tr>
+<tr>
+<td>showDetails</td>
+<td>Displays one record using textContent</td>
+</tr>
+<tr>
+<td>fitResults</td>
+<td>Fits the map to valid displayed points</td>
+</tr>
+<tr>
+<td>render</td>
+<td>Applies filters and updates markers, list and counts</td>
+</tr>
+<tr>
+<td>init</td>
+<td>Initialises the map, loads data and wires events</td>
+</tr>
+</table></div>
+<h3 id="how-the-filter-behaves">How the filter behaves</h3>
+<p>A record appears only when district, activity and search all match. Empty selectors accept all values. Search checks village and anonymous code without case sensitivity. A no-match search produces an explicit empty result.</p>
+<h3 id="why-the-previous-layer-is-cleared">Why the previous layer is cleared</h3>
+<p>Every render removes old features before adding the new subset. It also rebuilds the result buttons and counts. The map, list and statistics therefore describe the same records.</p>
+<h3 id="before-copying">Before copying</h3>
+<p>Keep the HTML ids unchanged. The script expects search, district, activity, reset, fit, count, status, results, detail and map. A spelling mismatch can stop the application.</p>
+<h3 id="scope-of-the-teaching-solution">Scope of the teaching solution</h3>
+<p>The core solution includes a street basemap, colour legend, search, district and activity selection, result list and detail panel. Satellite imagery, a records table and clustering are extension exercises.</p><h2 id="complete-atlas-javascript">Complete atlas JavaScript</h2><div class="code-block"><div class="code-head"><span>app.js</span><button type="button" class="copy-code">Copy code</button></div><pre><code>&#x27;use strict&#x27;;
+const $ = id =&gt; document.getElementById(id);
+const colors = {
+  &#x27;Seaweed Farm&#x27;: &#x27;#098c78&#x27;,
+  &#x27;Sea Cucumber Farm&#x27;: &#x27;#d98c32&#x27;,
+  &#x27;Crab Farm&#x27;: &#x27;#7654b8&#x27;,
+  &#x27;Unspecified&#x27;: &#x27;#71838b&#x27;
+};
+let map, farmLayer;
+let allFeatures = [], visibleFeatures = [];
+const markerById = new Map();
+
+function validPoint(feature) {
+  const g = feature.geometry;
+  if (!g || g.type !== &#x27;Point&#x27;) return false;
+  const [lon, lat] = g.coordinates;
+  return Number.isFinite(lon) &amp;&amp; Number.isFinite(lat) &amp;&amp;
+    lon &gt;= -180 &amp;&amp; lon &lt;= 180 &amp;&amp; lat &gt;= -90 &amp;&amp; lat &lt;= 90;
+}
+
+function fillSelect(id, key) {
+  const values = allFeatures.map(f =&gt; f.properties[key]);
+  [...new Set(values.filter(Boolean))].sort().forEach(value =&gt; {
+    $(id).add(new Option(value, value));
+  });
+}
+
+function showDetails(feature) {
+  const p = feature.properties;
+  $(&#x27;detail&#x27;).replaceChildren();
+  const fields = {
+    &#x27;Farm code&#x27;: p.id, &#x27;Survey response&#x27;: p.surveyId,
+    &#x27;Activity&#x27;: p.type, &#x27;Village&#x27;: p.village,
+    &#x27;District&#x27;: p.district, &#x27;Ownership&#x27;: p.ownership,
+    &#x27;Method from survey&#x27;: p.method,
+    &#x27;Area (unit unspecified)&#x27;: p.area,
+    &#x27;GPS accuracy (m)&#x27;: p.precision
+  };
+  for (const [label, value] of Object.entries(fields)) {
+    const row = document.createElement(&#x27;p&#x27;);
+    row.textContent = `${label}: ${value ?? &#x27;Not reported&#x27;}`;
+    $(&#x27;detail&#x27;).append(row);
+  }
+  if (p.sharedLocation || p.type === &#x27;Crab Farm&#x27;) {
+    const note = document.createElement(&#x27;p&#x27;);
+    note.textContent = p.type === &#x27;Crab Farm&#x27;
+      ? &#x27;Activity conflicts with survey response; verify.&#x27;
+      : &#x27;Coordinates are shared with another record.&#x27;;
+    $(&#x27;detail&#x27;).append(note);
+  }
+}
+
+function fitResults() {
+  const bounds = farmLayer.getBounds();
+  if (bounds.isValid()) map.fitBounds(bounds, {
+    padding: [25, 25], maxZoom: 15
+  });
+}
+
+function render() {
+  const query = $(&#x27;search&#x27;).value.trim().toLowerCase();
+  visibleFeatures = allFeatures.filter(feature =&gt; {
+    const p = feature.properties;
+    const matchDistrict = !$(&#x27;district&#x27;).value ||
+      p.district === $(&#x27;district&#x27;).value;
+    const matchActivity = !$(&#x27;activity&#x27;).value ||
+      p.type === $(&#x27;activity&#x27;).value;
+    const matchText = [p.id, p.village].some(value =&gt;
+      String(value ?? &#x27;&#x27;).toLowerCase().includes(query));
+    return matchDistrict &amp;&amp; matchActivity &amp;&amp; matchText;
+  });
+  farmLayer.clearLayers();
+  markerById.clear();
+  farmLayer.addData(visibleFeatures);
+  $(&#x27;results&#x27;).replaceChildren();
+  $(&#x27;detail&#x27;).textContent = &#x27;Select a marker or a result.&#x27;;
+  const responses = new Set(visibleFeatures.map(f =&gt;
+    f.properties.surveyId).filter(Boolean));
+  const mapped = visibleFeatures.filter(validPoint).length;
+  $(&#x27;count&#x27;).textContent = `${visibleFeatures.length} records | ` +
+    `${mapped} mapped | ${responses.size} survey responses`;
+  if (!visibleFeatures.length) {
+    $(&#x27;results&#x27;).textContent = &#x27;No matching farm records.&#x27;;
+  }
+  visibleFeatures.forEach(feature =&gt; {
+    const p = feature.properties;
+    const button = document.createElement(&#x27;button&#x27;);
+    button.type = &#x27;button&#x27;;
+    button.textContent = `${p.id} - ${p.village} - ${p.type}`;
+    button.addEventListener(&#x27;click&#x27;, () =&gt; {
+      showDetails(feature);
+      const marker = markerById.get(p.id);
+      if (marker) {
+        map.setView(marker.getLatLng(), 16);
+        marker.openPopup();
+      }
+    });
+    $(&#x27;results&#x27;).append(button);
+  });
+}
+
+async function init() {
+  try {
+    if (!window.L) throw new Error(&#x27;Leaflet did not load.&#x27;);
+    map = L.map(&#x27;map&#x27;).setView([-6.16, 39.38], 10);
+    L.tileLayer(&#x27;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#x27;, {
+      maxZoom: 19,
+      attribution: &#x27;&amp;copy; OpenStreetMap contributors&#x27;
+    }).on(&#x27;tileerror&#x27;, () =&gt; {
+      $(&#x27;status&#x27;).textContent = &#x27;Basemap unavailable. Check internet.&#x27;;
+    }).addTo(map);
+    L.control.scale({ imperial: false }).addTo(map);
+    farmLayer = L.geoJSON(null, {
+      filter: validPoint,
+      pointToLayer: (feature, latlng) =&gt; L.circleMarker(latlng, {
+        radius: 7, color: &#x27;white&#x27;, weight: 1.5,
+        fillColor: colors[feature.properties.type] || colors.Unspecified,
+        fillOpacity: 0.9
+      }),
+      onEachFeature: (feature, marker) =&gt; {
+        const p = feature.properties;
+        const popup = document.createElement(&#x27;div&#x27;);
+        popup.textContent = `${p.id} - ${p.village} - ${p.type}`;
+        marker.bindPopup(popup);
+        marker.on(&#x27;click&#x27;, () =&gt; showDetails(feature));
+        markerById.set(p.id, marker);
+      }
+    }).addTo(map);
+    const response = await fetch(&#x27;data/farms.geojson&#x27;);
+    if (!response.ok) throw new Error(`Data HTTP ${response.status}`);
+    const data = await response.json();
+    if (data.type !== &#x27;FeatureCollection&#x27; ||
+        !Array.isArray(data.features)) throw new Error(&#x27;Invalid GeoJSON&#x27;);
+    allFeatures = data.features;
+    fillSelect(&#x27;district&#x27;, &#x27;district&#x27;);
+    fillSelect(&#x27;activity&#x27;, &#x27;type&#x27;);
+    $(&#x27;search&#x27;).addEventListener(&#x27;input&#x27;, render);
+    [&#x27;district&#x27;, &#x27;activity&#x27;].forEach(id =&gt;
+      $(id).addEventListener(&#x27;change&#x27;, render));
+    $(&#x27;reset&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+      [&#x27;search&#x27;, &#x27;district&#x27;, &#x27;activity&#x27;].forEach(id =&gt; $(id).value = &#x27;&#x27;);
+      render(); fitResults();
+    });
+    $(&#x27;fit&#x27;).addEventListener(&#x27;click&#x27;, fitResults);
+    render(); fitResults();
+  } catch (error) {
+    $(&#x27;count&#x27;).textContent = &#x27;Atlas could not finish loading.&#x27;;
+    $(&#x27;status&#x27;).textContent = error.message +
+      &#x27; Use a local web server and check the Console and Network tabs.&#x27;;
+  }
+}
+init();</code></pre></div><h2 id="check-the-atlas-against-known-results">Check the atlas against known results</h2>
+<p><b>2.</b> Perform every check below. Record pass or fail, evidence and any correction. A screenshot alone does not demonstrate that a filter works.</p>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Expected result</th>
+</tr>
+<tr>
+<td>Reload with clear controls</td>
+<td>437 records, 437 mapped, 301 responses</td>
+</tr>
+<tr>
+<td>Choose Seaweed Farm</td>
+<td>407 location records</td>
+</tr>
+<tr>
+<td>Choose Sea Cucumber Farm</td>
+<td>18 location records</td>
+</tr>
+<tr>
+<td>Choose Crab Farm</td>
+<td>1 location and a verification note in details</td>
+</tr>
+<tr>
+<td>Choose Unspecified</td>
+<td>11 location records</td>
+</tr>
+<tr>
+<td>Search zz-no-match</td>
+<td>0 records and No matching farm records</td>
+</tr>
+<tr>
+<td>Click Reset</td>
+<td>All controls clear and full counts return</td>
+</tr>
+<tr>
+<td>Click a result button</td>
+<td>Map focuses on record and details update</td>
+</tr>
+<tr>
+<td>Combine district and activity</td>
+<td>Every result satisfies both conditions</td>
+</tr>
+<tr>
+<td>Narrow browser to 390 pixels</td>
+<td>No horizontal overflow; controls usable</td>
+</tr>
+</table></div>
+<p><b>3.</b> Temporarily rename farms.geojson. Reload and verify the data-loading error. Restore the filename and reload. This confirms that a broken request does not pretend to be a valid empty dataset.</p>
+<p><b>4.</b> In developer tools, change one area value in a disposable data copy to 0 and another to null. Verify that the panel shows 0 for the first and Not reported for the second. Restore the original class dataset.</p>
+<h3 id="checkpoint">Checkpoint</h3>
+<p>The finished teaching atlas passes the core checks and reports the source limits accurately. Your explanation should distinguish mapped locations, survey responses and verified unique farms.</p></article><label class="complete"><input id="unit-complete" type="checkbox">Mark this unit complete</label><p class="status" id="storage-status" aria-live="polite"></p><nav class="pager" aria-label="Unit navigation"><a href="../labs/03-data.html"><small>Previous unit</small>Load the survey locations</a><a href="../assessment.html"><small>Next step</small>Submit your project</a></nav><footer class="course-footer">Zanzibar Aquaculture Atlas teaching course · Survey export September 2026<br>Examples use Leaflet 1.9.4. Anonymous location records are not verified unique farms.</footer></main></div></body></html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn to build a Zanzibar Aquaculture Atlas using HTML, CSS, JavaScript, Leaflet and real anonymous survey data."><title>Assessment and troubleshooting | Zanzibar Atlas Course</title><link rel="stylesheet" href="assets/course.css"><script defer src="assets/course.js"></script><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><noscript><style>.sidebar{display:block}.menu-toggle,.copy-code,.complete{display:none}</style></noscript></head>
+<body data-unit="assessment"><a class="skip" href="#main">Skip to lesson content</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">≈</span><span>Zanzibar Atlas Course<small>HTML · CSS · JAVASCRIPT · LEAFLET</small></span></a><a class="header-link" href="demo/index.html" target="_blank" rel="noopener">Open the atlas demo</a><button type="button" class="menu-toggle" id="menu-toggle" aria-controls="course-nav" aria-expanded="false">Menu</button></header><div class="layout"><nav class="sidebar" id="course-nav" aria-label="Course navigation"><a href="index.html">Course overview</a><div class="nav-group">Lessons</div><a data-unit="lesson-1" href="lessons/01-html.html"><span class="nav-num">01</span>HTML and web foundations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-2" href="lessons/02-css.html"><span class="nav-num">02</span>CSS and responsive layouts<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-3" href="lessons/03-javascript.html"><span class="nav-num">03</span>JavaScript and page interactions<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-4" href="lessons/04-leaflet.html"><span class="nav-num">04</span>Leaflet and GeoJSON<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-5" href="lessons/05-data.html"><span class="nav-num">05</span>Survey data and filtering<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-6" href="lessons/06-testing.html"><span class="nav-num">06</span>Testing and responsible sharing<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Practical labs</div><a data-unit="lab-1" href="labs/01-layout.html"><span class="nav-num">01</span>Build the page and layout<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-2" href="labs/02-map.html"><span class="nav-num">02</span>Display a Leaflet map<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-3" href="labs/03-data.html"><span class="nav-num">03</span>Load the survey locations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-4" href="labs/04-interactions.html"><span class="nav-num">04</span>Add filters and farm details<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Course resources</div><a href="fieldwork.html">Fieldwork and findings</a><a href="resources.html">Downloads and setup</a><a href="assessment.html" aria-current="page">Assessment and troubleshooting</a><a href="instructor.html">Instructor guide</a><div class="sidebar-foot"><div id="progress-count">0 of 10 units completed</div><div class="progress-track"><span id="progress-bar"></span></div>Progress is saved only in this browser.</div></nav><main class="content" id="main"><div class="eyebrow">Web mapping · Zanzibar</div><h1>Assessment and troubleshooting</h1><div class="meta"><span>100-mark rubric</span><span>Submission checklist</span></div><details class="onpage"><summary>On this page</summary><ul><li><a href="#submission-requirements-and-marking">Submission requirements and marking</a></li><li><a href="#submit">Submit</a></li><li><a href="#extension-tasks">Extension tasks</a></li><li><a href="#instructor-prompts">Instructor prompts</a></li><li><a href="#resolve-problems-and-review-the-sources">Resolve problems and review the sources</a></li><li><a href="#authoritative-references">Authoritative references</a></li></ul></details><article class="reading"><h2 id="submission-requirements-and-marking">Submission requirements and marking</h2>
+<h3 id="submit">Submit</h3>
+<p>&#8226; Your project folder with index.html, styles.css, app.js and data/farms.geojson.</p>
+<p>&#8226; Three screenshots: all records, a filtered result and the narrow-screen layout.</p>
+<p>&#8226; A test log showing actions, expected results, actual results and fixes.</p>
+<p>&#8226; A 300-500 word explanation of coordinate order, the workbook join, count meaning, data limits and privacy.</p>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">Marks</th>
+<th scope="col">Evidence</th>
+</tr>
+<tr>
+<td>Structure and usability</td>
+<td>15</td>
+<td>Labels, valid ids, clear controls</td>
+</tr>
+<tr>
+<td>Responsive CSS</td>
+<td>15</td>
+<td>Map height, mobile layout, focus states</td>
+</tr>
+<tr>
+<td>Map and data loading</td>
+<td>20</td>
+<td>Real GeoJSON points, popups, attribution</td>
+</tr>
+<tr>
+<td>Filtering and selection</td>
+<td>25</td>
+<td>Combined controls, consistent counts and details</td>
+</tr>
+<tr>
+<td>Data interpretation</td>
+<td>15</td>
+<td>Correct record/response meaning and quality notes</td>
+</tr>
+<tr>
+<td>Testing and explanation</td>
+<td>10</td>
+<td>Test log, error handling and oral explanation</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>100</td>
+<td></td>
+</tr>
+</table></div>
+<h3 id="extension-tasks">Extension tasks</h3>
+<p>Choose one after the core passes: add a records table using the same visibleFeatures array; add a second permitted basemap with attribution; introduce marker clustering while preserving record counts; or compare point locations with verified administrative boundaries. Explain and test the added behaviour.</p>
+<h3 id="instructor-prompts">Instructor prompts</h3>
+<p>Ask a student to explain why a selected district cannot imply a point has been spatially validated. Then ask them to trace one search action from event handler to filter predicate to map redraw.</p>
+<h2 id="resolve-problems-and-review-the-sources">Resolve problems and review the sources</h2>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Symptom</th>
+<th scope="col">First check or correction</th>
+</tr>
+<tr>
+<td>HTTP 404 for GeoJSON</td>
+<td>Serve the correct folder; check data/farms.geojson spelling</td>
+</tr>
+<tr>
+<td>Fetch fails from file URL</td>
+<td>Use the local HTTP server or Live Server</td>
+</tr>
+<tr>
+<td>L is not defined</td>
+<td>Check CDN request and Leaflet-before-app script order</td>
+</tr>
+<tr>
+<td>Blank or collapsed map</td>
+<td>Confirm #map height and tile requests</td>
+</tr>
+<tr>
+<td>Points far from Zanzibar</td>
+<td>Check coordinate order and source CRS</td>
+</tr>
+<tr>
+<td>Old markers remain</td>
+<td>Clear farmLayer before addData</td>
+</tr>
+<tr>
+<td>Zero results after filtering</td>
+<td>Check exact activity values and reset controls</td>
+</tr>
+<tr>
+<td>Counts differ from source</td>
+<td>Distinguish location count and distinct response ids</td>
+</tr>
+<tr>
+<td>Port already in use</td>
+<td>Use port 8001 and browse localhost:8001</td>
+</tr>
+<tr>
+<td>Area shows an assumed unit</td>
+<td>Use the supplied unit-unspecified label</td>
+</tr>
+</table></div>
+<h3 id="authoritative-references">Authoritative references</h3>
+<p class="note"><b>Leaflet 1.9.4 reference</b><br/><a href="https://leafletjs.com/reference.html">https://leafletjs.com/reference.html</a></p>
+<p class="note"><b>MDN network requests</b><br/><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests">https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests</a></p>
+<p class="note"><b>GeoJSON standard RFC 7946</b><br/><a href="https://www.rfc-editor.org/rfc/rfc7946.html">https://www.rfc-editor.org/rfc/rfc7946.html</a></p>
+<p class="note"><b>OpenStreetMap tile policy</b><br/><a href="https://operations.osmfoundation.org/policies/tiles/">https://operations.osmfoundation.org/policies/tiles/</a></p>
+<p class="note">Sources accessed 5 October 2026. Data source: user-supplied Zanzibar Aquaculture Farm Survey workbook exported 15 September 2026. The course excludes the original workbook and personal identifiers.</p></article><footer class="course-footer">Zanzibar Aquaculture Atlas teaching course · Survey export September 2026<br>Examples use Leaflet 1.9.4. Anonymous location records are not verified unique farms.</footer></main></div></body></html>

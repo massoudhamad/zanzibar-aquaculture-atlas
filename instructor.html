@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn to build a Zanzibar Aquaculture Atlas using HTML, CSS, JavaScript, Leaflet and real anonymous survey data."><title>Instructor guide | Zanzibar Atlas Course</title><link rel="stylesheet" href="assets/course.css"><script defer src="assets/course.js"></script><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><noscript><style>.sidebar{display:block}.menu-toggle,.copy-code,.complete{display:none}</style></noscript></head>
+<body data-unit="instructor"><a class="skip" href="#main">Skip to lesson content</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">≈</span><span>Zanzibar Atlas Course<small>HTML · CSS · JAVASCRIPT · LEAFLET</small></span></a><a class="header-link" href="demo/index.html" target="_blank" rel="noopener">Open the atlas demo</a><button type="button" class="menu-toggle" id="menu-toggle" aria-controls="course-nav" aria-expanded="false">Menu</button></header><div class="layout"><nav class="sidebar" id="course-nav" aria-label="Course navigation"><a href="index.html">Course overview</a><div class="nav-group">Lessons</div><a data-unit="lesson-1" href="lessons/01-html.html"><span class="nav-num">01</span>HTML and web foundations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-2" href="lessons/02-css.html"><span class="nav-num">02</span>CSS and responsive layouts<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-3" href="lessons/03-javascript.html"><span class="nav-num">03</span>JavaScript and page interactions<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-4" href="lessons/04-leaflet.html"><span class="nav-num">04</span>Leaflet and GeoJSON<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-5" href="lessons/05-data.html"><span class="nav-num">05</span>Survey data and filtering<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-6" href="lessons/06-testing.html"><span class="nav-num">06</span>Testing and responsible sharing<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Practical labs</div><a data-unit="lab-1" href="labs/01-layout.html"><span class="nav-num">01</span>Build the page and layout<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-2" href="labs/02-map.html"><span class="nav-num">02</span>Display a Leaflet map<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-3" href="labs/03-data.html"><span class="nav-num">03</span>Load the survey locations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-4" href="labs/04-interactions.html"><span class="nav-num">04</span>Add filters and farm details<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Course resources</div><a href="fieldwork.html">Fieldwork and findings</a><a href="resources.html">Downloads and setup</a><a href="assessment.html">Assessment and troubleshooting</a><a href="instructor.html" aria-current="page">Instructor guide</a><div class="sidebar-foot"><div id="progress-count">0 of 10 units completed</div><div class="progress-track"><span id="progress-bar"></span></div>Progress is saved only in this browser.</div></nav><main class="content" id="main"><div class="eyebrow">Web mapping · Zanzibar</div><h1>Instructor guide</h1><div class="meta"><span>Suggested teaching schedule</span><span>Review answers</span></div><details class="onpage"><summary>On this page</summary><ul><li><a href="#building-the-zanzibar-aquaculture-atlas">Building the Zanzibar Aquaculture Atlas</a></li><li><a href="#audience-and-learning-outcomes">Audience and learning outcomes</a></li><li><a href="#teach-and-assess-the-whole-workflow">Teach and assess the whole workflow</a></li><li><a href="#suggested-delivery">Suggested delivery</a></li><li><a href="#short-review-answers">Short review answers</a></li><li><a href="#assessment">Assessment</a></li><li><a href="#authoritative-reading">Authoritative reading</a></li><li><a href="#share-the-course">Share the course</a></li></ul></details><article class="reading"><h2 id="building-the-zanzibar-aquaculture-atlas">Building the Zanzibar Aquaculture Atlas</h2>
+<p>These notes teach students to turn aquaculture survey locations into an interactive web atlas. The lab pages follows the same concepts and provides code, checkpoints and an assessment. The result is a small teaching version of the atlas, with a map, filters, result list and selected-record details.</p>
+<h3 id="audience-and-learning-outcomes">Audience and learning outcomes</h3>
+<p>Designed for undergraduate GIS or computing students with basic computer skills and some exposure to programming. Students new to JavaScript should practise variables, arrays and functions before Lab 3.</p>
+<p>&#8226; Build a semantic HTML page and a responsive CSS layout.</p>
+<p>&#8226; Explain how JavaScript changes the page and responds to user actions.</p>
+<p>&#8226; Display GeoJSON survey points in Leaflet and filter them.</p>
+<p>&#8226; Distinguish location records from survey responses and explain data limits.</p>
+<p>&#8226; Debug loading, coordinate and interaction problems.</p>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Session</th>
+<th scope="col">Focus</th>
+<th scope="col">Time</th>
+</tr>
+<tr>
+<td>Lecture 1</td>
+<td>Web structure and HTML</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Lecture 2</td>
+<td>CSS and responsive layouts</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Lecture 3</td>
+<td>JavaScript and the DOM</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Lecture 4</td>
+<td>Web maps and GeoJSON</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Lecture 5</td>
+<td>Survey data and filtering</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Lecture 6</td>
+<td>Testing and responsible sharing</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Labs 1 to 4</td>
+<td>Build and test the atlas</td>
+<td>2 hours each</td>
+</tr>
+</table></div>
+<h2 id="teach-and-assess-the-whole-workflow">Teach and assess the whole workflow</h2>
+<h3 id="suggested-delivery">Suggested delivery</h3>
+<p>Before class, verify internet access, Python 3 or Live Server, and the GeoJSON file. Demonstrate one failure intentionally in each session: a missing HTML id, zero map height, a filename error, reversed manual coordinates, a stale layer, and a no-match filter. Students should diagnose the failure before receiving the correction.</p>
+<h3 id="short-review-answers">Short review answers</h3>
+<p>&#8226; HTML defines structure, CSS presentation, JavaScript behaviour, and Leaflet map operations.</p>
+<p>&#8226; Leaflet manual positions use latitude then longitude; GeoJSON Point arrays use longitude then latitude.</p>
+<p>&#8226; 437 counts repeat-location records; 301 counts linked survey responses.</p>
+<p>&#8226; Shared coordinates do not by themselves prove duplicate farms.</p>
+<p>&#8226; textContent displays a survey answer without interpreting it as HTML.</p>
+<p>&#8226; A failed HTTP request should produce an error, not a misleading empty dataset.</p>
+<h3 id="assessment">Assessment</h3>
+<p>Use the 100-mark rubric in the assessment page. Ask each student to explain one filter predicate, one data-quality concern and the coordinate-order difference. Award functionality marks based on demonstrated behaviour, not screenshots alone.</p>
+<h3 id="authoritative-reading">Authoritative reading</h3>
+<p class="note"><b>Leaflet 1.9.4 reference</b><br/><a href="https://leafletjs.com/reference.html">https://leafletjs.com/reference.html</a></p>
+<p class="note"><b>MDN network requests</b><br/><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests">https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests</a></p>
+<p class="note"><b>GeoJSON standard RFC 7946</b><br/><a href="https://www.rfc-editor.org/rfc/rfc7946.html">https://www.rfc-editor.org/rfc/rfc7946.html</a></p>
+<p class="note"><b>OpenStreetMap tile policy</b><br/><a href="https://operations.osmfoundation.org/policies/tiles/">https://operations.osmfoundation.org/policies/tiles/</a></p>
+<p class="note">Technical references accessed 5 October 2026. The practical code uses the Leaflet 1.9.4 API.</p><h2 id="share-the-course">Share the course</h2><p>Publish the repository with GitHub Pages and share direct lesson or lab links with the class. Students can read the full text without creating an account. Ask for project submissions through your existing course or LMS workflow.</p></article><footer class="course-footer">Zanzibar Aquaculture Atlas teaching course · Survey export September 2026<br>Examples use Leaflet 1.9.4. Anonymous location records are not verified unique farms.</footer></main></div></body></html>

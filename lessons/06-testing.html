@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn to build a Zanzibar Aquaculture Atlas using HTML, CSS, JavaScript, Leaflet and real anonymous survey data."><title>Testing and responsible sharing | Zanzibar Atlas Course</title><link rel="stylesheet" href="../assets/course.css"><script defer src="../assets/course.js"></script><link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"><noscript><style>.sidebar{display:block}.menu-toggle,.copy-code,.complete{display:none}</style></noscript></head>
+<body data-unit="lesson-6"><a class="skip" href="#main">Skip to lesson content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">≈</span><span>Zanzibar Atlas Course<small>HTML · CSS · JAVASCRIPT · LEAFLET</small></span></a><a class="header-link" href="../demo/index.html" target="_blank" rel="noopener">Open the atlas demo</a><button type="button" class="menu-toggle" id="menu-toggle" aria-controls="course-nav" aria-expanded="false">Menu</button></header><div class="layout"><nav class="sidebar" id="course-nav" aria-label="Course navigation"><a href="../index.html">Course overview</a><div class="nav-group">Lessons</div><a data-unit="lesson-1" href="../lessons/01-html.html"><span class="nav-num">01</span>HTML and web foundations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-2" href="../lessons/02-css.html"><span class="nav-num">02</span>CSS and responsive layouts<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-3" href="../lessons/03-javascript.html"><span class="nav-num">03</span>JavaScript and page interactions<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-4" href="../lessons/04-leaflet.html"><span class="nav-num">04</span>Leaflet and GeoJSON<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-5" href="../lessons/05-data.html"><span class="nav-num">05</span>Survey data and filtering<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lesson-6" href="../lessons/06-testing.html" aria-current="page"><span class="nav-num">06</span>Testing and responsible sharing<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Practical labs</div><a data-unit="lab-1" href="../labs/01-layout.html"><span class="nav-num">01</span>Build the page and layout<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-2" href="../labs/02-map.html"><span class="nav-num">02</span>Display a Leaflet map<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-3" href="../labs/03-data.html"><span class="nav-num">03</span>Load the survey locations<span class="nav-tick" aria-hidden="true"></span></a><a data-unit="lab-4" href="../labs/04-interactions.html"><span class="nav-num">04</span>Add filters and farm details<span class="nav-tick" aria-hidden="true"></span></a><div class="nav-group">Course resources</div><a href="../fieldwork.html">Fieldwork and findings</a><a href="../resources.html">Downloads and setup</a><a href="../assessment.html">Assessment and troubleshooting</a><a href="../instructor.html">Instructor guide</a><div class="sidebar-foot"><div id="progress-count">0 of 10 units completed</div><div class="progress-track"><span id="progress-bar"></span></div>Progress is saved only in this browser.</div></nav><main class="content" id="main"><div class="eyebrow">Web mapping · Zanzibar</div><h1>Testing and responsible sharing</h1><div class="meta"><span>Lesson 6</span><span>1 hour</span><span>Read, practise, check</span></div><details class="onpage"><summary>On this page</summary><ul><li><a href="#verify-the-atlas-before-using-it">Verify the atlas before using it</a></li><li><a href="#explain-the-limits">Explain the limits</a></li><li><a href="#review-access-before-public-sharing">Review access before public sharing</a></li><li><a href="#basemap-use">Basemap use</a></li><li><a href="#extensions-after-the-core-works">Extensions after the core works</a></li></ul></details><article class="reading"><h2 id="verify-the-atlas-before-using-it">Verify the atlas before using it</h2>
+<p>A page that loads is not sufficient evidence that its map and filters are correct. Test representative actions and compare counts with source controls. Use the table below as a classroom acceptance checklist.</p>
+<div class="table-wrap"><table>
+<tr>
+<th scope="col">Test</th>
+<th scope="col">Expected evidence</th>
+</tr>
+<tr>
+<td>Initial load</td>
+<td>437 records, 437 mapped, 301 responses</td>
+</tr>
+<tr>
+<td>Activity selection</td>
+<td>407 seaweed, 18 sea cucumber, 1 crab, 11 unspecified</td>
+</tr>
+<tr>
+<td>No-match search</td>
+<td>Zero records and an empty-state message</td>
+</tr>
+<tr>
+<td>Combined controls</td>
+<td>Every listed record meets all active filters</td>
+</tr>
+<tr>
+<td>Selection and reset</td>
+<td>Details change correctly; reset restores all records</td>
+</tr>
+<tr>
+<td>Narrow viewport</td>
+<td>Controls usable and no horizontal overflow</td>
+</tr>
+<tr>
+<td>Missing data file</td>
+<td>An error message appears instead of a false zero</td>
+</tr>
+</table></div>
+<h3 id="explain-the-limits">Explain the limits</h3>
+<p>This export primarily represents southern Unguja. It does not establish complete Zanzibar or Pemba coverage. Coordinate-range checks identify malformed values, but they do not prove that a location lies inside the reported district. That requires an authoritative boundary layer and a spatial check.</p>
+<h3 id="review-access-before-public-sharing">Review access before public sharing</h3>
+<p>Remove names, contact numbers, photographs and sensitive notes from class data. Exact locations can still require controlled sharing. The downloadable teaching kit uses anonymous record codes and omits the original workbook. Before a public launch, confirm appropriate data access and source permissions.</p>
+<h3 id="basemap-use">Basemap use</h3>
+<p>Keep map attribution visible. Review the tile provider policy before a public rollout. Do not bulk-download public OpenStreetMap tiles for an offline classroom. Use an approved provider or a permitted local basemap where needed.</p>
+<h3 id="extensions-after-the-core-works">Extensions after the core works</h3>
+<p>Consider a records table, a satellite basemap, marker clustering, or verified administrative boundaries. Each extension needs its own data and interaction checks. Do not add totals or indicators whose meaning is unsupported by the survey.</p></article><label class="complete"><input id="unit-complete" type="checkbox">Mark this unit complete</label><p class="status" id="storage-status" aria-live="polite"></p><nav class="pager" aria-label="Unit navigation"><a href="../lessons/05-data.html"><small>Previous unit</small>Survey data and filtering</a><a href="../labs/01-layout.html"><small>Next unit</small>Build the page and layout</a></nav><footer class="course-footer">Zanzibar Aquaculture Atlas teaching course · Survey export September 2026<br>Examples use Leaflet 1.9.4. Anonymous location records are not verified unique farms.</footer></main></div></body></html>
